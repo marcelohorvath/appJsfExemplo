@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <h:form>
+            <h:dataTable value="#{cursoMB.lista}" var="curso" border="1">
+                <h:column>
+                    #{curso.id}
+                </h:column> 
+                <h:column>
+                    #{curso.nome}
+                </h:column>                
+                <h:column>
+                    <h:commandLink action="#{cursoMB.editar}" value=" Editar ">
+                        <f:setPropertyActionListener target="#{cursoMB.curso}" value="#{curso}" />                    
+                    </h:commandLink>
+                    <h:commandLink action="#{cursoMB.excluir}" value=" Excluir ">
+                        <f:setPropertyActionListener target="#{cursoMB.curso}" value="#{curso}" />                    
+                    </h:commandLink>
+
+                </h:column>                
+            </h:dataTable>  
+            <h:commandButton action="#{cursoMB.novoCurso}" value="Novo curso"/>
+        </h:form>        
+    </h:body>
+</html>
+

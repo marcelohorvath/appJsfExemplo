@@ -7,8 +7,10 @@
     </h:head>
     <h:body>
         <h:form>
-            <h:commandLink action="listCurso.xhtml" value="Lista de cursos."/>        
-        </h:form>
+            <h:inputText value="#{cursoMB.curso.nome}" />
+            <br />
+            <h:commandButton action="#{cursoMB.salvar}" value="Salvar" />
+        </h:form>        
     </h:body>
 </html>
 

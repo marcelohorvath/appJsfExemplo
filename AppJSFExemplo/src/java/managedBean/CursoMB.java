@@ -32,6 +32,7 @@ public class CursoMB implements Serializable {
     public String salvar() {
         CursoFacade facade = new CursoFacade();
         facade.salvar(curso);
+        curso = null;
         return "listCurso.xhtml";
     }
 
@@ -40,8 +41,9 @@ public class CursoMB implements Serializable {
     }
 
     public String excluir() {
-         CursoFacade facade = new CursoFacade();
-         facade.excluir(curso);
+        CursoFacade facade = new CursoFacade();
+        facade.excluir(curso);
+        curso = null;
         return "listCurso.xhtml";
     }
 

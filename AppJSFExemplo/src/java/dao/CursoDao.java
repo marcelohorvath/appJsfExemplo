@@ -8,26 +8,32 @@ import org.hibernate.Session;
 public class CursoDao {
 
     public Curso salvar(Curso curso) {
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        session.getTransaction().begin();
+        Session session = null;
+        HibernateUtility.beginTransaction();
+        session = HibernateUtility.getSession();
         session.saveOrUpdate(curso);
-        session.getTransaction().commit();
-        session.close();
+        HibernateUtility.commitTransaction();
+        HibernateUtility.closeSession();
         return curso;
     }
 
     public List<Curso> getAll() {
         List<Curso> lista = new ArrayList();
-        Session session = HibernateUtil.getSessionFactory().openSession();
+        Session session = null;
+        HibernateUtility.beginTransaction();
+        session = HibernateUtility.getSession();
         lista = session.createQuery("from Curso").list();
+        HibernateUtility.commitTransaction();
+        HibernateUtility.closeSession();
         return lista;
     }
 
     public void excluir(Curso curso) {
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        session.getTransaction().begin();
+        Session session = null;
+        HibernateUtility.beginTransaction();
+        session = HibernateUtility.getSession();
         session.delete(curso);
-        session.getTransaction().commit();
-        session.close();
+        HibernateUtility.commitTransaction();
+        HibernateUtility.closeSession();
     }
 }

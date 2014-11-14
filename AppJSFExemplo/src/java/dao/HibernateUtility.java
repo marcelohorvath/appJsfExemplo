@@ -55,6 +55,9 @@ public class HibernateUtility {
             factory = new Configuration()
 //                    /***MYSQL***/
                     //TODO Lembrar de parametrar de outro modo
+                    //.setProperty("hibernate.current_session_context_class", "jta") 
+                    .setProperty("hibernate.current_session_context_class", "managed") 
+                   // .setProperty("hibernate.current_session_context_class", "thread")                     
                     .setProperty("hibernate.dialect", "org.hibernate.dialect.MySQLInnoDBDialect") // tipo de dialeto do banco
                     .setProperty("hibernate.connection.driver_class", "com.mysql.jdbc.Driver") // driver do banco
                     .setProperty("hibernate.connection.url", "jdbc:mysql://localhost:3306/senai") // endereço do banco de dados
@@ -72,6 +75,7 @@ public class HibernateUtility {
                     .setProperty("hibernate.generate_statistics", "true")
                     .setProperty("hibernate.use_sql_comments", "true")
                     .setProperty("hibernate.format_sql", "true")
+                    .setProperty("hibernate.show_sql", "true")
                     //CADASTROS abaixo coloque todas classes que deseja ser modelo para criação do banco de dados
                     .addAnnotatedClass(Curso.class)               
                     //MOVIMENTOS
